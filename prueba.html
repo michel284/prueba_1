@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>BancoEjemplo - Login (LAB)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body { font-family: Arial, sans-serif; background:#f2f4f7; display:flex; align-items:center; justify-content:center; height:100vh; }
+    .card { background:#fff; padding:28px; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.08); width:320px; }
+    input { width:100%; padding:10px; margin:8px 0; box-sizing:border-box; }
+    button { width:100%; padding:10px; margin-top:12px; cursor:pointer; }
+    .note { font-size:12px; color:#666; margin-top:10px; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h3>BancoEjemplo — Acceso (LAB)</h3>
+    <form id="labLogin">
+      <input id="user" name="user" placeholder="User (o correo eletronico)" required>
+      <input id="pass" type="password" name="pass" placeholder="Contraseña" required>
+      <button type="submit">Entrar</button>
+    </form>
+    <div class="note">Ejercicio de laboratorio: esta página NO envía datos a Internet.</div>
+  </div>
+
+  <script>
+    document.getElementById('labLogin').addEventListener('submit', function (e) {
+      e.preventDefault(); // evita envío real
+      // Opcional: muestra un mensaje formativo en la VM víctima
+      alert('AVISO LAB: Esto es una simulación. Ninguna credencial fue enviada.\nUsuario: ' 
+            + document.getElementById('user').value);
+      // Puedes además guardar localmente en la VM atacante para análisis forense (solo si lo haces en entorno controlado)
+      console.log('Simulación: datos ingresados (no enviados).');
+    });
+  </script>
+</body>
+</html>
