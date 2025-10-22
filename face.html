@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Facebook - Inicia sesión o regístrate</title>
+<style>
+  
+  /* --- Estructura general --- */
+  html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    flex-direction: column; /* Permite que el footer quede al final */
+  }
+
+  /* --- Contenedor principal --- */
+  .container {
+    flex: 1; /* Ocupa todo el espacio disponible antes del footer */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    padding: 40px 20px;
+    flex-wrap: wrap; /* En pantallas pequeñas, el texto sube */
+  }
+
+  /* --- Texto de la izquierda --- */
+  .text {
+    max-width: 400px;
+  }
+
+  .text h2 {
+    color: #1877f2;
+    font-size: 48px;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+
+  .text p {
+    font-size: 20px;
+    color: #1c1e21;
+    text-align: left;
+    line-height: 1.4;
+  }
+
+  /* --- Formulario (derecha) --- */
+  .card {
+    background-color: #fff;
+    padding: 20px 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    text-align: center;
+    width: 360px;
+  }
+
+  input {
+    width: 90%;
+    padding: 14px;
+    margin: 8px 0;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    font-size: 16px;
+  }
+
+  .primary {
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 14px;
+    width: 60%; /* 🔹 Botón más angosto */
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .primary:hover {
+    background-color: #166fe5;
+  }
+
+  .link {
+    display: block;
+    margin-top: 12px;
+    color: #1877f2;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .link:hover {
+    text-decoration: underline;
+  }
+
+  .divider {
+    border-top: 1px solid #dddfe2;
+    margin: 20px 0;
+  }
+
+  .new-account {
+    background-color: #42b72a;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 14px;
+    width: 70%;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .new-account:hover {
+    background-color: #36a420;
+  }
+
+  .notice {
+    font-size: 12px;
+    color: #555;
+    margin-top: 10px;
+  }
+
+  /* --- Footer --- */
+  footer {
+    background-color: white;
+    text-align: center;
+    color: #737373;
+    font-size: 12px;
+    line-height: 1.8;
+    border-top: 1px solid #ddd;
+    padding: 30px 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  footer a {
+    color: #737373;
+    text-decoration: none;
+    margin: 0 5px;
+  }
+
+  footer a:hover {
+    text-decoration: underline;
+  }
+
+  /* --- Adaptación móvil --- */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      gap: 30px;
+      text-align: center;
+    }
+
+    .text h2, .text p {
+      text-align: center;
+    }
+
+    .card {
+      width: 90%;
+      max-width: 400px;
+    }
+
+    .primary, .new-account {
+      width: 80%;
+    }
+  }
+</style>
+</head>
+<body>
+
+  <!-- Contenedor principal -->
+  <div class="container">
+    <div class="text">
+      <h2>Facebook</h2>
+      <p>
+        Facebook te ayuda a comunicarte y <br>
+        compartir con las personas que <br>
+        forman parte de tu vida.
+      </p>
+    </div>
+
+    <div class="card" role="main">
+      <form id="labForm" autocomplete="off">
+        <input id="user" name="user" placeholder="Correo electrónico o número de teléfono" required />
+        <input id="pass" name="pass" type="password" placeholder="Contraseña" required />
+
+        <a href="https://www.facebook.com/?locale=es_LA">
+          <button class="primary" type="button">Iniciar sesión</button>
+        </a>
+
+        <a href="https://www.facebook.com/login/identify/?ctx=recover" class="link">
+          ¿Olvidaste tu contraseña?
+        </a>
+
+        <div class="divider"></div>
+
+        <button class="new-account" type="button">Crear cuenta nueva</button>
+
+        <div class="notice">
+          <a href="#" style="color: #1c1e21;">Crea una página</a> para una celebridad, una marca o un negocio.
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer fijo al final -->
+
+
+      <footer>
+    Español · English (US) · Português (Brasil) · Français (France) · Italiano · Deutsch · العربية · 日本語 · हिन्दी · 中文(简体)
+    <br><br>
+    Registrarte · Iniciar sesión · Messenger · Facebook Lite · Video · Meta Pay · Tienda de Meta · Meta Quest · Ray-Ban Meta · Meta AI
+    <br>
+    Más contenido de Meta AI · Instagram · Threads · Centro de información de votación · Política de privacidad · Centro de privacidad
+    <br>
+    Información · Crear anuncio · Crear página · Desarrolladores · Empleo · Cookies · Opciones de anuncios · Condiciones · Ayuda
+    <br><br>
+    Meta © 202
+    
+</body>
+</html>
