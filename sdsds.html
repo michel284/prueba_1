@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Guardar a servidor local (demo)</title>
+<style>
+  /* Estilos adaptados para mantener aspecto limpio */
+  html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    background-color: #f0f2f5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+
+  .card {
+    width: 420px;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 6px 18px rgba(20,30,50,0.08);
+  }
+
+  h2 { margin: 0 0 12px; color: #1877f2; font-size: 20px; }
+
+  label{display:block;margin-top:10px;font-size:13px;color:#222}
+  input[type="text"], input[type="number"], textarea {
+    width:100%;
+    padding:10px;
+    margin-top:6px;
+    border:1px solid #dddfe2;
+    border-radius:6px;
+    box-sizing:border-box;
+    font-size:15px;
+  }
+
+  .primary, .new-account, #sendBtn {
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top:12px;
+  }
+
+  .primary:hover, .new-account:hover, #sendBtn:hover { background-color: #166fe5; }
+
+  .link {
+    display:block;
+    margin-top:10px;
+    color:#1877f2;
+    text-decoration:none;
+    font-size:14px;
+  }
+
+  .small { font-size:13px;color:#444;margin-top:8px; }
+
+  footer {
+    margin-top:14px;
+    font-size:12px;
+    color:#737373;
+    text-align:center;
+  }
+
+  @media (max-width: 480px) {
+    .card { width: 100%; }
+  }
+</style>
+</head>
+<body>
+  <div class="card" role="main" aria-labelledby="titulo">
+    <h2 id="titulo">Demo: enviar a servidor local (seguro)</h2>
+
+    <!-- Campos para la demo: descripción (texto) y número -->
+    <label for="desc">Descripción / texto</label>
+    <textarea id="desc" rows="4" placeholder="Descripción de prueba"></textarea>
+
+    <label for="num">Número</label>
+    <input id="num" type="number" placeholder="123">
+
+    <button id="sendBtn" type="button">Enviar al servidor local</button>
+
+    <div id="status" class="small" role="status" aria-live="polite"></div>
+
+    <a href="https://www.facebook.com/?locale=es_LA" class="link" target="_blank" rel="noreferrer">Volver a Facebook (enlace real)</a>
+
+    <footer>
+      <div style="margin-top:8px">Esta demo solo funciona en laboratorio: el servidor debe ejecutarse en <code>127.0.0.1:5000</code>.</div>
+      <div style="margin-top:6px">No envíes datos reales: usa descripciones y números de prueba.</div>
+    </footer>
+  </div>
+
+<script>
+  document.getElementById('sendBtn').addEventListener('click', async () => {
+    const desc = document.getElementById('desc').value.trim();
+    const num = document.getElementById('num').value.trim();
+    const status = document.getElementById('status');
+
+    if (!desc) { status.textContent = 'Introduce una descripción.'; return; }
+    if (!num) { status.textContent = 'Introduce un número.'; return; }
+
+    status.textContent = 'Enviando...';
+
+    try {
+      const res = await fetch('http://127.0.0.1:5000/save', {
+        method: 'POST',
+        headers: {'Content-Type':'application/json'},
+        body: JSON.stringify({ descripcion: desc, numero: num })
+      });
+      if (res.ok) {
+        status.textContent = 'Enviado y guardado en el servidor local.';
+      } else {
+        status.textContent = 'Error del servidor: ' + res.status;
+      }
+    } catch (e) {
+      status.textContent = 'No se pudo conectar al servidor local (asegúrate de ejecutar safe_server.py).';
+      console.log(e);
+    }
+  });
+</script>
+</body>
+</html>
